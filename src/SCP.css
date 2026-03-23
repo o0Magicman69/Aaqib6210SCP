@@ -1,0 +1,25 @@
+/* Basic app wrapper style. */
+.App {
+    text-align: center;
+    font-family: Consolas, monospace;
+}
+
+/* Header bar colors and spacing. */
+.Header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+/* Simple navbar container style. */
+.navbar 
+{
+    background-color: #333;
+    overflow: hidden;
+}   
+
+/* Background block style. */
+.background-image {
+    background-color: #333;
+    overflow: hidden;
+}
