@@ -1,13 +1,341 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --panel-bg: #faf7f0;
+  --panel-border: #d5cdc0;
+  --header-bg: #1c1d1f;
+  --header-text: #0011ff;
+  --accent: #0c0b0b;
+  --accent-strong: #5f1d1d;
+  --text-main: #22201c;
+  --text-muted: #5c564d;
+  --shadow-soft: 0 18px 42px rgba(28, 29, 31, 0.12);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Makes sizing easier so padding/border stay inside width/height. */
+* {
+  box-sizing: border-box;
+}
+
+/* Main page setup stuff like background, font, and basic layout. */
+body {
+  margin: 0;
+  min-width: 320px;
+  background-image: url('https://images.steamusercontent.com/ugc/843711130619248414/D3CD3FD5E03FB799D83EAED0D672697847BE879F/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false');
+  background-size: cover;
+  background-position: center;
+  color: rgb(13, 2, 2);
+  display: flex;
+
+  font-family: Georgia, 'Times New Roman', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+}
+
+/* Links use the same color as nearby text by default. */
+a {
+  color: inherit;
+}
+
+/* App root should fill the screen area. */
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Big home title box style. */
+.home-heading {
+  margin: 0 0 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: transparent;
+  color: #f8f8f8;
+  text-align: center;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  letter-spacing: 0.04em;
+}
+
+/* Home content wrapper under the title area. */
+.home-section {
+  margin: 0 auto 1.5rem;
+  width: min(1100px, calc(100% - 2rem));
+}
+
+/* Short intro copy below the main heading. */
+.home-intro {
+  max-width: 60ch;
+  margin: 0 0 1.1rem;
+  color: #f1ede6;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+/* Small logo for the heading . */
+.logo {
+  width: clamp(2rem, 4vw, 2.8rem);
+  height: clamp(2rem, 4vw, 2.8rem);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+/* Responsive grid for featured SCP cards. */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+/* Single featured card container style. */
+.featured-card {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(9, 12, 15, 0.65);
+  backdrop-filter: blur(2px);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Card image display settings. */
+.featured-card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Card content spacing and text tone. */
+.featured-card-body {
+  padding: 0.85rem 0.9rem 1rem;
+  color: #f5efe4;
+}
+
+.featured-card-body h2 {
+  margin: 0.1rem 0 0.45rem;
+  font-size: 1.15rem;
+}
+
+.featured-card-body p {
+  margin: 0;
+  color: rgba(245, 239, 228, 0.9);
+  line-height: 1.45;
+}
+
+/* Small class tag above each featured SCP title. */
+.featured-card-class {
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: #f6d3b3;
+}
+
+/* Link button to open the selected SCP file. */
+.featured-card-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #f8f4eb;
+}
+
+.featured-card-link:hover,
+.featured-card-link:focus-visible {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* Keeps the app centered and not too wide. */
+.app-shell {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2rem 0 3rem;
+}
+
+/* Top header card look and colors. */
+.app-header {
+  padding: 2rem 1.5rem 1.75rem;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 24px 24px 0 0;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.04), transparent 60%),
+    var(--header-bg);
+  color: var(--header-text);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Main heading text in the header. */
+.app-header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color:#2904fd;
+  text-align: center;
+
+}
+
+.app-kicker,
+.app-subtitle {
+  margin: 0;
+}
+
+/* Small label text above the subtitle. */
+.app-kicker {
+  margin-bottom: 0.75rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(245, 242, 235, 0.72);
+}
+
+/* Subtitle text under the main heading. */
+.app-subtitle {
+  max-width: 42rem;
+  margin-top: 0.75rem;
+  color: rgba(245, 242, 235, 0.82);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Navigation bar container styles. */
+.navbar {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;  
+  border-top: 0;
+  border-radius: 0 0 24px 24px;
+  background:transparent;
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+
+/* Put nav links in a row and let them wrap. */
+.navbar-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Remove extra spacing from each nav item. */
+.navbar-item {
+  margin: 0;
+}
+
+/* Each nav link looks like a rounded button. */
+.navbar-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 0.95rem;
+  border: 1px solid var(--panel-border);
+  border-radius: 999px;
+  background: #fffdf8;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: transform 140ms ease, border-color 140ms ease, background-color 140ms ease, color 140ms ease;
+}
+
+/* Hover/focus styles so links feel interactive. */
+.navbar-link:hover,
+.navbar-link:focus-visible {
+  border-color: var(--accent);
+  background: #fff7f2;
+  color: var(--accent-strong);
+  transform: translateY(-1px);
+}
+
+/* This is for the active/current nav link. */
+.navbar-link.is-active {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff9f5;
+}
+
+/* Leaves a minimum area for page content. */
+.app-main {
+  min-height: 260px;
+}
+
+/* Shared card style for content sections. */
+.content-panel {
+  padding: 1.5rem;
+  border: 1px solid var(--panel-border);
+  border-radius: 24px;
+  background: var(--panel-bg);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Heading spacing and size inside content cards. */
+.content-panel h2 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+}
+
+/* Paragraph spacing and text color for readability. */
+.content-panel p {
+  margin: 0.75rem 0 0;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* Make bold text stand out a bit more. */
+.content-panel strong {
+  color: var(--text-main);
+}
+
+/* Image styles used in the SCP content section. */
+.scp-image {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 0 1rem;
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  object-fit: cover;
+}
+.carousel-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+} 
+/* Mobile tweaks for a smaller screen. */
+@media (max-width: 640px) {
+  .app-shell {
+    width: min(100% - 1rem, 1100px);
+    padding-top: 1rem;
+  }
+
+  .app-header,
+  .navbar,
+  .content-panel {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .navbar-list {
+    gap: 0.5rem;
+  }
+
+  .navbar-link {
+    width: 100%;
+  }
+
+  .navbar-item {
+    flex: 1 1 100%;
+  }
+
+  .home-heading {
+    justify-content: center;
+  }
 }
