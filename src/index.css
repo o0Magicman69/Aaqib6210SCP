@@ -121,6 +121,11 @@ a {
   line-height: 1.45;
 }
 
+/* Title text for featured SCP cards. */
+.featured-title {
+  color: #ffffff;
+}
+
 /* Small class tag above each featured SCP title. */
 .featured-card-class {
   margin-bottom: 0.35rem;
