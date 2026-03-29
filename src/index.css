@@ -153,6 +153,10 @@ a {
   margin: 0 auto;
   padding: 2rem 0 3rem;
 }
+.featured-title {
+  color: #ffffff;
+}
+
 
 /* Top header card look and colors. */
 .app-header {
