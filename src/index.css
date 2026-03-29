@@ -86,7 +86,10 @@ a {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
 }
-
+/* late edit jsut featured title was unseen being black font */
+.featured-title {
+  color: #ffffff;
+}
 /* Single featured card container style. */
 .featured-card {
   border: 1px solid rgba(255, 255, 255, 0.22);
@@ -153,9 +156,7 @@ a {
   margin: 0 auto;
   padding: 2rem 0 3rem;
 }
-.featured-title {
-  color: #ffffff;
-}
+
 
 
 /* Top header card look and colors. */
